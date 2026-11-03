@@ -6,6 +6,7 @@ import { create, index, store } from '@/routes/roles';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
 import React from 'react';
+import { toast } from 'sonner';
 
 const RolesCreate = () => {
     const { data, setData, post, processing, errors } = useForm({
@@ -15,6 +16,7 @@ const RolesCreate = () => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         post(store().url);
+        toast.success('Success create role')
     };
 
     return (

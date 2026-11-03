@@ -5,6 +5,7 @@ import { create, destroy, edit, index } from '@/routes/vehiclesModel';
 import { Head, router } from '@inertiajs/react';
 import { SquarePen, Trash } from 'lucide-react';
 import React, { useState } from 'react';
+import { toast } from 'sonner';
 
 type VehicleModel = { id: number; name: string, brand: string, type: string };
 
@@ -89,6 +90,7 @@ const VehicleModels = ({ vehiclesModels, filters }: Props) => {
                                                 router.delete(
                                                     destroy(c.id).url,
                                                 );
+                                                toast.success('Success delete vehicle model')
                                             }
                                         }}
                                     >

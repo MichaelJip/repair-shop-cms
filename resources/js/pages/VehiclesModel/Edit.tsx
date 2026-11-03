@@ -6,6 +6,7 @@ import { index, update } from '@/routes/vehiclesModel';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
 import React from 'react'
+import { toast } from 'sonner';
 
 type Props = {
     vehicleModels: { id: number; brand: string, type: string };
@@ -20,6 +21,7 @@ const EditVehicleModels = ({ vehicleModels }: Props) => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         patch(update(vehicleModels.id).url);
+        toast.success('Success edit vehicle model')
     };
     return (
         <>

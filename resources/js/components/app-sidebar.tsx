@@ -17,6 +17,8 @@ import { home } from '@/routes';
 import type { NavItem } from '@/types';
 import roles from '@/routes/roles';
 import vehiclesModel from '@/routes/vehiclesModel';
+import customers from '@/routes/customers';
+import vehicles from '@/routes/vehicles';
 
 const mainNavItems: NavItem[] = [
     {
@@ -32,6 +34,16 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Vehicle Models',
         href: vehiclesModel.index(),
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Customers',
+        href: customers.index(),
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Vehicles',
+        href: vehicles.index(),
         icon: LayoutGrid,
     },
 ];

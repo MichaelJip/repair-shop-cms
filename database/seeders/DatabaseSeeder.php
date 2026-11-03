@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             UserSeeder::class,
             VehiclesModelsSeeder::class,
+            CustomersSeeder::class,
+            VehiclesSeeder::class,
         ]);
     }
 }

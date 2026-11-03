@@ -6,6 +6,7 @@ import { index, update } from '@/routes/roles';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
 import React from 'react'
+import { toast } from 'sonner';
 
 type Props = {
     role: { id: number; name: string };
@@ -19,6 +20,7 @@ const EditRoles = ({ role }: Props) => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         patch(update(role.id).url);
+        toast.success('Success edit role')
     };
     return (
         <>

@@ -6,6 +6,7 @@ import { index, store } from '@/routes/vehiclesModel';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
 import React from 'react';
+import { toast } from 'sonner';
 
 const VehicleModelCreate = () => {
     const { data, setData, post, processing, errors } = useForm({
@@ -16,6 +17,7 @@ const VehicleModelCreate = () => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         post(store().url);
+        toast.success('Success create vehicle model')
     };
 
     return (

@@ -5,6 +5,7 @@ import { create, destroy, edit, index } from '@/routes/roles';
 import { Head, router } from '@inertiajs/react';
 import { SquarePen, Trash } from 'lucide-react';
 import React, { useState } from 'react';
+import { toast } from 'sonner';
 
 type Role = { id: number; name: string };
 
@@ -26,7 +27,6 @@ const Roles = ({ roles, filters }: Props) => {
             <div className="mx-4 my-4">
                 <form onSubmit={submit}>
                     <div className="flex flex-row gap-4">
-
                         <Input
                             type="search"
                             placeholder="Search..."
@@ -84,6 +84,7 @@ const Roles = ({ roles, filters }: Props) => {
                                                 router.delete(
                                                     destroy(c.id).url,
                                                 );
+                                                toast.success('Success delete role')
                                             }
                                         }}
                                     >
