@@ -7,6 +7,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
 import React from 'react';
 import { toast } from 'sonner';
+import Select from 'react-select';
 
 const VehicleModelCreate = () => {
     const { data, setData, post, processing, errors } = useForm({
@@ -17,8 +18,19 @@ const VehicleModelCreate = () => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         post(store().url);
-        toast.success('Success create vehicle model')
+        toast.success('Success create vehicle model');
     };
+
+    const options = [
+        {
+            value: 'car',
+            label: 'Car',
+        },
+        {
+            value: 'motorcycle',
+            label: 'Motorcycle',
+        },
+    ];
 
     return (
         <>
@@ -40,11 +52,20 @@ const VehicleModelCreate = () => {
                         <InputError message={errors.brand} />
                     </div>
                     <div className="space-y-2 flex flex-col gap-1">
-                        <Label htmlFor="name">Type</Label>
-                        <Input
-                            id="type"
-                            value={data.type}
-                            onChange={(e) => setData('type', e.target.value)}
+                        <Label htmlFor="type">Type</Label>
+                        <Select
+                            inputId="type"
+                            options={options}
+                            value={
+                                options.find(
+                                    (option) =>
+                                        option.value ===
+                                        data.type,
+                                ) ?? null
+                            }
+                            onChange={(option) =>
+                                setData('type', option ? option.value : '')
+                            }
                         />
                         <InputError message={errors.type} />
                     </div>

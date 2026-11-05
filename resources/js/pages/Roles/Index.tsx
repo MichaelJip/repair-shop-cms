@@ -42,7 +42,7 @@ const Roles = ({ roles, filters }: Props) => {
                             Search
                         </Button>
                         <Button
-                            type='button'
+                            type="button"
                             variant="outline"
                             className="bg-green-500 text-white dark:bg-green-900 hover:dark:bg-green-800 hover:bg-green-400"
                             onClick={() => router.get(create())}
@@ -84,7 +84,9 @@ const Roles = ({ roles, filters }: Props) => {
                                                 router.delete(
                                                     destroy(c.id).url,
                                                 );
-                                                toast.success('Success delete role')
+                                                toast.success(
+                                                    'Success delete role',
+                                                );
                                             }
                                         }}
                                     >
@@ -95,7 +97,7 @@ const Roles = ({ roles, filters }: Props) => {
                         },
                     ]}
                 />
-            </div >
+            </div>
         </>
     );
 };

@@ -5,14 +5,14 @@ import { Label } from '@/components/ui/label';
 import { index, store } from '@/routes/vehicles';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
-import React from 'react'
-import Select from 'react-select'
+import React from 'react';
+import Select from 'react-select';
 import { toast } from 'sonner';
 
 type Props = {
-    customers: { id: number, name: string }[]
-    vehicleModels: { id: number, brand: string }[]
-}
+    customers: { id: number; name: string }[];
+    vehicleModels: { id: number; brand: string }[];
+};
 
 const CreateVehicle = ({ customers, vehicleModels }: Props) => {
     const { data, setData, post, processing, errors } = useForm({
@@ -21,13 +21,19 @@ const CreateVehicle = ({ customers, vehicleModels }: Props) => {
         plate_number: '',
     });
 
-    const customersOptions = customers.map((item) => ({ value: item.id, label: item.name }));
-    const vehicleModelOptions = vehicleModels.map((item) => ({ value: item.id, label: item.brand }));
+    const customersOptions = customers.map((item) => ({
+        value: item.id,
+        label: item.name,
+    }));
+    const vehicleModelOptions = vehicleModels.map((item) => ({
+        value: item.id,
+        label: item.brand,
+    }));
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         post(store().url);
-        toast.success('Success create vehicle')
+        toast.success('Success create vehicle');
     };
 
     return (
@@ -45,8 +51,19 @@ const CreateVehicle = ({ customers, vehicleModels }: Props) => {
                         <Select
                             inputId="customer_id"
                             options={customersOptions}
-                            value={customersOptions.find((option) => option.value === Number(data.customer_id)) ?? null}
-                            onChange={(option) => setData('customer_id', option ? String(option.value) : '')}
+                            value={
+                                customersOptions.find(
+                                    (option) =>
+                                        option.value ===
+                                        Number(data.customer_id),
+                                ) ?? null
+                            }
+                            onChange={(option) =>
+                                setData(
+                                    'customer_id',
+                                    option ? String(option.value) : '',
+                                )
+                            }
                         />
                         <InputError message={errors.customer_id} />
                     </div>
@@ -55,8 +72,19 @@ const CreateVehicle = ({ customers, vehicleModels }: Props) => {
                         <Select
                             inputId="vehicle_model_id"
                             options={vehicleModelOptions}
-                            value={vehicleModelOptions.find((option) => option.value === Number(data.vehicle_model_id)) ?? null}
-                            onChange={(option) => setData('vehicle_model_id', option ? String(option.value) : '')}
+                            value={
+                                vehicleModelOptions.find(
+                                    (option) =>
+                                        option.value ===
+                                        Number(data.vehicle_model_id),
+                                ) ?? null
+                            }
+                            onChange={(option) =>
+                                setData(
+                                    'vehicle_model_id',
+                                    option ? String(option.value) : '',
+                                )
+                            }
                         />
                         <InputError message={errors.customer_id} />
                     </div>
@@ -65,7 +93,9 @@ const CreateVehicle = ({ customers, vehicleModels }: Props) => {
                         <Input
                             id="plate_number"
                             value={data.plate_number}
-                            onChange={(e) => setData('plate_number', e.target.value)}
+                            onChange={(e) =>
+                                setData('plate_number', e.target.value)
+                            }
                         />
                         <InputError message={errors.plate_number} />
                     </div>
@@ -82,10 +112,10 @@ const CreateVehicle = ({ customers, vehicleModels }: Props) => {
                 </form>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default CreateVehicle
+export default CreateVehicle;
 
 CreateVehicle.layout = {
     breadcrumbs: [

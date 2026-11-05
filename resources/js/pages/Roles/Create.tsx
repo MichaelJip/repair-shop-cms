@@ -16,7 +16,7 @@ const RolesCreate = () => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         post(store().url);
-        toast.success('Success create role')
+        toast.success('Success create role');
     };
 
     return (

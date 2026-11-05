@@ -5,13 +5,13 @@ import { Label } from '@/components/ui/label';
 import { index, store } from '@/routes/customers';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
-import React from 'react'
-import Select from 'react-select'
+import React from 'react';
+import Select from 'react-select';
 import { toast } from 'sonner';
 
 type Props = {
-    users: { id: number, name: string }[]
-}
+    users: { id: number; name: string }[];
+};
 
 const CreateCustomer = ({ users }: Props) => {
     const { data, setData, post, processing, errors } = useForm({
@@ -25,7 +25,7 @@ const CreateCustomer = ({ users }: Props) => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         post(store().url);
-        toast.success('Success create customer')
+        toast.success('Success create customer');
     };
 
     return (
@@ -43,8 +43,18 @@ const CreateCustomer = ({ users }: Props) => {
                         <Select
                             inputId="user_id"
                             options={options}
-                            value={options.find((option) => option.value === Number(data.user_id)) ?? null}
-                            onChange={(option) => setData('user_id', option ? String(option.value) : '')}
+                            value={
+                                options.find(
+                                    (option) =>
+                                        option.value === Number(data.user_id),
+                                ) ?? null
+                            }
+                            onChange={(option) =>
+                                setData(
+                                    'user_id',
+                                    option ? String(option.value) : '',
+                                )
+                            }
                         />
                         <InputError message={errors.user_id} />
                     </div>
@@ -80,10 +90,10 @@ const CreateCustomer = ({ users }: Props) => {
                 </form>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default CreateCustomer
+export default CreateCustomer;
 
 CreateCustomer.layout = {
     breadcrumbs: [

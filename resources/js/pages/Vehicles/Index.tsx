@@ -4,13 +4,18 @@ import { Input } from '@/components/ui/input';
 import { create, destroy, edit, index } from '@/routes/vehicles';
 import { Head, router } from '@inertiajs/react';
 import { SquarePen, Trash } from 'lucide-react';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { toast } from 'sonner';
 
-type Customer = { id: number, name: string }
-type VehicleModel = { id: number, brand: string }
+type Customer = { id: number; name: string };
+type VehicleModel = { id: number; brand: string };
 
-type Vehicle = { id: number; plate_number: string, customer: Customer | null, vehicle_model: VehicleModel | null };
+type Vehicle = {
+    id: number;
+    plate_number: string;
+    customer: Customer | null;
+    vehicle_model: VehicleModel | null;
+};
 
 type Props = {
     vehicles: Paginated<Vehicle>;
@@ -27,7 +32,7 @@ const Vehicles = ({ vehicles, filters }: Props) => {
     return (
         <>
             <Head title="Customers" />
-            <div className='mx-4 my-4'>
+            <div className="mx-4 my-4">
                 <form onSubmit={submit}>
                     <div className="flex flex-row gap-4">
                         <Input
@@ -45,7 +50,7 @@ const Vehicles = ({ vehicles, filters }: Props) => {
                             Search
                         </Button>
                         <Button
-                            type='button'
+                            type="button"
                             variant="outline"
                             className="bg-green-500 text-white dark:bg-green-900 hover:dark:bg-green-800 hover:bg-green-400"
                             onClick={() => router.get(create())}
@@ -93,11 +98,17 @@ const Vehicles = ({ vehicles, filters }: Props) => {
                                         variant="destructive"
                                         className={'bg-red-500 text-white'}
                                         onClick={() => {
-                                            if (confirm(`Delete "${c.customer?.name ?? '-'} -${c.plate_number}"`)) {
+                                            if (
+                                                confirm(
+                                                    `Delete "${c.customer?.name ?? '-'} -${c.plate_number}"`,
+                                                )
+                                            ) {
                                                 router.delete(
                                                     destroy(c.id).url,
                                                 );
-                                                toast.success('Success delete vehicle')
+                                                toast.success(
+                                                    'Success delete vehicle',
+                                                );
                                             }
                                         }}
                                     >
@@ -110,10 +121,10 @@ const Vehicles = ({ vehicles, filters }: Props) => {
                 />
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Vehicles
+export default Vehicles;
 
 Vehicles.layout = {
     breadcrumbs: [

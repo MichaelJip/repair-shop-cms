@@ -5,14 +5,14 @@ import { Label } from '@/components/ui/label';
 import { index, update } from '@/routes/customers';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
-import React from 'react'
-import Select from 'react-select'
+import React from 'react';
+import Select from 'react-select';
 import { toast } from 'sonner';
 
 type Props = {
-    customer: { id: number, user_id: number, name: string, phone: string }
-    users: { id: number, name: string }[]
-}
+    customer: { id: number; user_id: number; name: string; phone: string };
+    users: { id: number; name: string }[];
+};
 
 const EditCustomer = ({ customer, users }: Props) => {
     const { data, setData, put, processing, errors } = useForm({
@@ -26,7 +26,7 @@ const EditCustomer = ({ customer, users }: Props) => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         put(update(customer.id).url);
-        toast.success('Success edit customer')
+        toast.success('Success edit customer');
     };
     return (
         <>
@@ -43,8 +43,15 @@ const EditCustomer = ({ customer, users }: Props) => {
                         <Select
                             inputId="user_id"
                             options={options}
-                            value={options.find((option) => option.value === Number(data.user_id)) ?? null}
-                            onChange={(option) => setData('user_id', option ? option.value : 0)}
+                            value={
+                                options.find(
+                                    (option) =>
+                                        option.value === Number(data.user_id),
+                                ) ?? null
+                            }
+                            onChange={(option) =>
+                                setData('user_id', option ? option.value : 0)
+                            }
                         />
                         <InputError message={errors.user_id} />
                     </div>
@@ -61,7 +68,7 @@ const EditCustomer = ({ customer, users }: Props) => {
                         <Label htmlFor="phone">Phone</Label>
                         <Input
                             id="phone"
-                            type='number'
+                            type="number"
                             value={data.phone}
                             onChange={(e) => setData('phone', e.target.value)}
                         />
@@ -81,10 +88,10 @@ const EditCustomer = ({ customer, users }: Props) => {
                 </form>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default EditCustomer
+export default EditCustomer;
 
 EditCustomer.layout = {
     breadcrumbs: [

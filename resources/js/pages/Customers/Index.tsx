@@ -4,12 +4,12 @@ import { Input } from '@/components/ui/input';
 import { create, destroy, edit, index } from '@/routes/customers';
 import { Head, router } from '@inertiajs/react';
 import { SquarePen, Trash } from 'lucide-react';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { toast } from 'sonner';
 
-type User = { id: number, name: string }
+type User = { id: number; name: string };
 
-type Customer = { id: number; name: string, phone: string, user: User };
+type Customer = { id: number; name: string; phone: string; user: User };
 
 type Props = {
     customers: Paginated<Customer>;
@@ -26,7 +26,7 @@ const Customers = ({ customers, filters }: Props) => {
     return (
         <>
             <Head title="Customers" />
-            <div className='mx-4 my-4'>
+            <div className="mx-4 my-4">
                 <form onSubmit={submit}>
                     <div className="flex flex-row gap-4">
                         <Input
@@ -44,7 +44,7 @@ const Customers = ({ customers, filters }: Props) => {
                             Search
                         </Button>
                         <Button
-                            type='button'
+                            type="button"
                             variant="outline"
                             className="bg-green-500 text-white dark:bg-green-900 hover:dark:bg-green-800 hover:bg-green-400"
                             onClick={() => router.get(create())}
@@ -91,7 +91,9 @@ const Customers = ({ customers, filters }: Props) => {
                                                 router.delete(
                                                     destroy(c.id).url,
                                                 );
-                                                toast.success('Success delete customer')
+                                                toast.success(
+                                                    'Success delete customer',
+                                                );
                                             }
                                         }}
                                     >
@@ -104,10 +106,10 @@ const Customers = ({ customers, filters }: Props) => {
                 />
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Customers
+export default Customers;
 
 Customers.layout = {
     breadcrumbs: [

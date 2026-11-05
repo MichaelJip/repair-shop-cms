@@ -5,34 +5,47 @@ import { Label } from '@/components/ui/label';
 import { index, update } from '@/routes/vehiclesModel';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
-import React from 'react'
+import React from 'react';
 import { toast } from 'sonner';
+import Select from 'react-select';
 
 type Props = {
-    vehicleModels: { id: number; brand: string, type: string };
+    vehiclesModel: { id: number; brand: string; type: string };
 };
 
-const EditVehicleModels = ({ vehicleModels }: Props) => {
+const EditVehicleModels = ({ vehiclesModel }: Props) => {
     const { data, setData, patch, processing, errors } = useForm({
-        brand: vehicleModels.brand,
-        type: vehicleModels.type,
+        brand: vehiclesModel.brand,
+        type: vehiclesModel.type,
     });
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
-        patch(update(vehicleModels.id).url);
-        toast.success('Success edit vehicle model')
+        patch(update(vehiclesModel.id).url);
+        toast.success('Success edit vehicle model');
     };
+
+    const options = [
+        {
+            value: 'car',
+            label: 'Car',
+        },
+        {
+            value: 'motorcycle',
+            label: 'Motorcycle',
+        },
+    ];
+
     return (
         <>
-            <Head title='Edit' />
-            <div className='mx-4 my-4'>
-                <Link href={index()} className='flex flex-row gap-4'>
+            <Head title="Edit" />
+            <div className="mx-4 my-4">
+                <Link href={index()} className="flex flex-row gap-4">
                     <ArrowLeft />
                     Back
                 </Link>
 
-                <form onSubmit={submit} className='mt-4 w-full space-y-4'>
+                <form onSubmit={submit} className="mt-4 w-full space-y-4">
                     <div className="space-y-2 flex flex-col gap-1">
                         <Label htmlFor="name">Brand</Label>
                         <Input
@@ -43,21 +56,30 @@ const EditVehicleModels = ({ vehicleModels }: Props) => {
                         <InputError message={errors.brand} />
                     </div>
                     <div className="space-y-2 flex flex-col gap-1">
-                        <Label htmlFor="name">Type</Label>
-                        <Input
-                            id="type"
-                            value={data.type}
-                            onChange={(e) => setData('type', e.target.value)}
+                        <Label htmlFor="type">Type</Label>
+                        <Select
+                            inputId="type"
+                            options={options}
+                            value={
+                                options.find(
+                                    (option) =>
+                                        option.value ===
+                                        data.type,
+                                ) ?? null
+                            }
+                            onChange={(option) =>
+                                setData('type', option ? option.value : '')
+                            }
                         />
                         <InputError message={errors.type} />
                     </div>
 
-                    <div className='flex justify-end'>
+                    <div className="flex justify-end">
                         <Button
-                            className='bg-green-500 text-white'
-                            type='submit'
+                            className="bg-green-500 text-white"
+                            type="submit"
                             disabled={processing}
-                            variant='outline'
+                            variant="outline"
                         >
                             Save
                         </Button>
@@ -65,10 +87,10 @@ const EditVehicleModels = ({ vehicleModels }: Props) => {
                 </form>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default EditVehicleModels
+export default EditVehicleModels;
 
 EditVehicleModels.layout = {
     breadcrumbs: [

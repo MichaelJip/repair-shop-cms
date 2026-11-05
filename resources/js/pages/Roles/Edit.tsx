@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { index, update } from '@/routes/roles';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
-import React from 'react'
+import React from 'react';
 import { toast } from 'sonner';
 
 type Props = {
@@ -20,34 +20,34 @@ const EditRoles = ({ role }: Props) => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         patch(update(role.id).url);
-        toast.success('Success edit role')
+        toast.success('Success edit role');
     };
     return (
         <>
-            <Head title='Edit' />
-            <div className='mx-4 my-4'>
-                <Link href={index()} className='flex flex-row gap-4'>
+            <Head title="Edit" />
+            <div className="mx-4 my-4">
+                <Link href={index()} className="flex flex-row gap-4">
                     <ArrowLeft />
                     Back
                 </Link>
 
-                <form onSubmit={submit} className='mt-4 w-full space-y-4'>
-                    <div className='space-y-2'>
-                        <Label htmlFor='name'>Name</Label>
+                <form onSubmit={submit} className="mt-4 w-full space-y-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="name">Name</Label>
                         <Input
-                            id='name'
+                            id="name"
                             value={data.name}
                             onChange={(e) => setData('name', e.target.value)}
                         />
                         <InputError message={errors.name} />
                     </div>
 
-                    <div className='flex justify-end'>
+                    <div className="flex justify-end">
                         <Button
-                            className='bg-green-500 text-white'
-                            type='submit'
+                            className="bg-green-500 text-white"
+                            type="submit"
                             disabled={processing}
-                            variant='outline'
+                            variant="outline"
                         >
                             Save
                         </Button>
@@ -55,10 +55,10 @@ const EditRoles = ({ role }: Props) => {
                 </form>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default EditRoles
+export default EditRoles;
 
 EditRoles.layout = {
     breadcrumbs: [

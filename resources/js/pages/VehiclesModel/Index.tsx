@@ -7,7 +7,7 @@ import { SquarePen, Trash } from 'lucide-react';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 
-type VehicleModel = { id: number; name: string, brand: string, type: string };
+type VehicleModel = { id: number; name: string; brand: string; type: string };
 
 type Props = {
     vehiclesModels: Paginated<VehicleModel>;
@@ -27,7 +27,6 @@ const VehicleModels = ({ vehiclesModels, filters }: Props) => {
             <div className="mx-4 my-4">
                 <form onSubmit={submit}>
                     <div className="flex flex-row gap-4">
-
                         <Input
                             type="search"
                             placeholder="Search..."
@@ -43,7 +42,7 @@ const VehicleModels = ({ vehiclesModels, filters }: Props) => {
                             Search
                         </Button>
                         <Button
-                            type='button'
+                            type="button"
                             variant="outline"
                             className="bg-green-500 text-white dark:bg-green-900 hover:dark:bg-green-800 hover:bg-green-400"
                             onClick={() => router.get(create())}
@@ -90,7 +89,9 @@ const VehicleModels = ({ vehiclesModels, filters }: Props) => {
                                                 router.delete(
                                                     destroy(c.id).url,
                                                 );
-                                                toast.success('Success delete vehicle model')
+                                                toast.success(
+                                                    'Success delete vehicle model',
+                                                );
                                             }
                                         }}
                                     >
@@ -101,7 +102,7 @@ const VehicleModels = ({ vehiclesModels, filters }: Props) => {
                         },
                     ]}
                 />
-            </div >
+            </div>
         </>
     );
 };
