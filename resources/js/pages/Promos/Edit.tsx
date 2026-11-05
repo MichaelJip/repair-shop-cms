@@ -19,7 +19,7 @@ type Props = {
     };
 };
 
-const EditRoles = ({ promo }: Props) => {
+const EditPromo = ({ promo }: Props) => {
     const { data, setData, patch, processing, errors } = useForm({
         code: promo.code,
         discount_type: promo.discount_type,
@@ -129,12 +129,12 @@ const EditRoles = ({ promo }: Props) => {
     );
 };
 
-export default EditRoles;
+export default EditPromo;
 
-EditRoles.layout = {
+EditPromo.layout = {
     breadcrumbs: [
         {
-            title: 'Roles',
+            title: 'Promos',
             href: index(),
         },
         {

@@ -1,11 +1,13 @@
 import { Link } from '@inertiajs/react';
 import {
+    Book,
     BookOpen,
     Car,
     FolderGit2,
     LayoutDashboard,
     ShieldCheck,
     Ticket,
+    UserCog,
     Users,
 } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
@@ -24,10 +26,12 @@ import {
 import { home } from '@/routes';
 import type { NavItem } from '@/types';
 import roles from '@/routes/roles';
+import users from '@/routes/users';
 import vehiclesModel from '@/routes/vehiclesModel';
 import customers from '@/routes/customers';
 import vehicles from '@/routes/vehicles';
 import promos from '@/routes/promos';
+import bookings from '@/routes/bookings';
 
 const mainNavItems: NavItem[] = [
     {
@@ -39,6 +43,11 @@ const mainNavItems: NavItem[] = [
         title: 'Roles',
         href: roles.index(),
         icon: ShieldCheck,
+    },
+    {
+        title: 'Users',
+        href: users.index(),
+        icon: UserCog,
     },
     {
         title: 'Customers',
@@ -64,6 +73,11 @@ const mainNavItems: NavItem[] = [
                 href: vehiclesModel.index(),
             },
         ],
+    },
+    {
+        title: 'Bookings',
+        href: bookings.index(),
+        icon: Book,
     },
 ];
 

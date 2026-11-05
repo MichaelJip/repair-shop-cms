@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CustomersSeeder::class,
             VehiclesSeeder::class,
             PromosSeeder::class,
+            BookingsSeeder::class,
         ]);
     }
 }

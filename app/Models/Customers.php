@@ -28,4 +28,9 @@ class Customers extends Model
     {
         return $this->hasMany(Vehicles::class, 'customer_id');
     }
+
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Bookings::class, 'customer_id');
+    }
 }
