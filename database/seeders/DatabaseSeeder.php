@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             VehiclesModelsSeeder::class,
             CustomersSeeder::class,
             VehiclesSeeder::class,
+            PromosSeeder::class,
         ]);
     }
 }

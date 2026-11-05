@@ -62,9 +62,7 @@ const EditVehicleModels = ({ vehiclesModel }: Props) => {
                             options={options}
                             value={
                                 options.find(
-                                    (option) =>
-                                        option.value ===
-                                        data.type,
+                                    (option) => option.value === data.type,
                                 ) ?? null
                             }
                             onChange={(option) =>

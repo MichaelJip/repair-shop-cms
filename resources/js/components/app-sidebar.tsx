@@ -1,5 +1,13 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import {
+    BookOpen,
+    Car,
+    FolderGit2,
+    LayoutDashboard,
+    ShieldCheck,
+    Ticket,
+    Users,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -19,32 +27,43 @@ import roles from '@/routes/roles';
 import vehiclesModel from '@/routes/vehiclesModel';
 import customers from '@/routes/customers';
 import vehicles from '@/routes/vehicles';
+import promos from '@/routes/promos';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: home(),
-        icon: LayoutGrid,
+        icon: LayoutDashboard,
     },
     {
         title: 'Roles',
         href: roles.index(),
-        icon: LayoutGrid,
-    },
-    {
-        title: 'Vehicle Models',
-        href: vehiclesModel.index(),
-        icon: LayoutGrid,
+        icon: ShieldCheck,
     },
     {
         title: 'Customers',
         href: customers.index(),
-        icon: LayoutGrid,
+        icon: Users,
+    },
+    {
+        title: 'Promos',
+        href: promos.index(),
+        icon: Ticket,
     },
     {
         title: 'Vehicles',
         href: vehicles.index(),
-        icon: LayoutGrid,
+        icon: Car,
+        items: [
+            {
+                title: 'All Vehicles',
+                href: vehicles.index(),
+            },
+            {
+                title: 'Vehicle Models',
+                href: vehiclesModel.index(),
+            },
+        ],
     },
 ];
 
